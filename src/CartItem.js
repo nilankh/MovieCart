@@ -29,8 +29,19 @@ export class CartItem extends Component {
         return {
             qty: prevState.qty + 1
         }
+    }, () => {
+        console.log(this.state)
     })
   };
+
+  decreaseQuantity = () => {
+      if(this.state.qty == 0){
+          return
+      }
+      this.setState({
+          qty: this.state.qty - 1
+      })
+  }
   render() {
     const { price, title, qty } = this.state;
     return (
@@ -56,6 +67,7 @@ export class CartItem extends Component {
               alt="decrease"
               className="action-icons"
               src="https://image.flaticon.com/icons/svg/1828/1828906.svg"
+              onClick={this.decreaseQuantity}
             />
             <img
               alt="delete"
