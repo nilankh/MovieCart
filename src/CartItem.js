@@ -10,10 +10,18 @@ export class CartItem extends Component {
       qty: 1,
       img: "",
     };
+    // second way of binding
+    // this.increaseQuantity = this.increaseQuantity.bind(this);
   }
-
+  //   increaseQuantity() {
+  //       console.log(this.state)
+  //   }
+  // 3rdway of binding
+  increaseQuantity = () => {
+    console.log(this.state);
+  };
   render() {
-      const { price, title, qty } = this.state
+    const { price, title, qty } = this.state;
     return (
       <div className="cart-item">
         <div className="left-block">
@@ -22,13 +30,16 @@ export class CartItem extends Component {
         <div className="right-block">
           <div style={{ fontSize: 25 }}>{title}</div>
           <div style={{ color: "#777" }}>Rs {price}</div>
-        <div style={{ color: "#777" }}>Qty: {qty}</div>
+          <div style={{ color: "#777" }}>Qty: {qty}</div>
           <div className="cart-item-actions">
             {/* buttons */}
             <img
               alt="increase"
               className="action-icons"
               src="https://image.flaticon.com/icons/svg/992/992651.svg"
+              // one way of binding
+              //   onClick={this.increaseQuantity.bind(this)}
+              onClick={this.increaseQuantity}
             />
             <img
               alt="decrease"
