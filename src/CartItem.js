@@ -18,7 +18,18 @@ export class CartItem extends Component {
   //   }
   // 3rdway of binding
   increaseQuantity = () => {
-    console.log(this.state);
+    // console.log(this.state);
+    // setSate form1(when we don't require prev state)
+    // this.setState({
+    //   qty: this.state.qty + 1,
+    // });
+
+    // setsate form 2(when we need prev state then we will use this)
+    this.setState((prevState) => {
+        return {
+            qty: prevState.qty + 1
+        }
+    })
   };
   render() {
     const { price, title, qty } = this.state;
