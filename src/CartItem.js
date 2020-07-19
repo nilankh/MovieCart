@@ -1,22 +1,6 @@
 import React, { Component } from "react";
 
 export class CartItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      price: 999,
-      title: "Phone",
-      qty: 1,
-      img: "",
-    };
-    // second way of binding
-    // this.increaseQuantity = this.increaseQuantity.bind(this);
-  }
-  //   increaseQuantity() {
-  //       console.log(this.state)
-  //   }
-  // 3rdway of binding
   increaseQuantity = () => {
     // console.log(this.state);
     // setSate form1(when we don't require prev state)
@@ -25,25 +9,29 @@ export class CartItem extends Component {
     // });
 
     // setsate form 2(when we need prev state then we will use this)
-    this.setState((prevState) => {
+    this.setState(
+      (prevState) => {
         return {
-            qty: prevState.qty + 1
-        }
-    }, () => {
-        console.log(this.state)
-    })
+          qty: prevState.qty + 1,
+        };
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
 
   decreaseQuantity = () => {
-      if(this.state.qty == 0){
-          return
-      }
-      this.setState({
-          qty: this.state.qty - 1
-      })
-  }
+    if (this.state.qty == 0) {
+      return;
+    }
+    this.setState({
+      qty: this.state.qty - 1,
+    });
+  };
   render() {
-    const { price, title, qty } = this.state;
+    console.log("this.props", this.props);
+    const { price, title, qty } = this.props.product;
     return (
       <div className="cart-item">
         <div className="left-block">
