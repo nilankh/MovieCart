@@ -28,7 +28,7 @@ export class CartItem extends Component {
               alt="decrease"
               className="action-icons"
               src="https://image.flaticon.com/icons/svg/1828/1828906.svg"
-              onClick={this.decreaseQuantity}
+              onClick={() => this.props.onDecreaseQuantity(this.props.product)}
             />
             <img
               alt="delete"

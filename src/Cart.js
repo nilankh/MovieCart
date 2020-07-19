@@ -33,13 +33,26 @@ class Cart extends Component {
   }
   handleIncreaseQuantity = (product) => {
     console.log("Hey please inc the qty of ", product);
-    const { products} = this.state;
-    const index = products.indexOf(product)
-    products[index].qty += 1
+    const { products } = this.state;
+    const index = products.indexOf(product);
+    products[index].qty += 1;
     this.setState({
-        products
-    })
-};
+      products,
+    });
+  };
+
+  handleDecreaseQuantity = (product) => {
+    console.log("Hey please dec the qty of", product);
+    const { products } = this.state;
+    const index = products.indexOf(product);
+    if(products[index].qty === 0){
+        return;
+    }
+    products[index].qty -= 1;
+    this.setState({
+      products,
+    });
+  };
   render() {
     const { products } = this.state;
     return (
@@ -50,6 +63,7 @@ class Cart extends Component {
               product={product}
               key={product.id}
               onIncreaseQuantity={this.handleIncreaseQuantity}
+              onDecreaseQuantity={this.handleDecreaseQuantity}
             />
           );
         })}
